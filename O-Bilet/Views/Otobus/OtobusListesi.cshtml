@@ -29,16 +29,15 @@
         {
             <tr>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Plaka)
+                 @Html.ActionLink(item.Plaka,"OtobusDetay",new {id=item.OtobusId })
                 </td>
                 <td>@Html.DisplayFor(m => item.Marka)</td>
                 <td>@Html.DisplayFor(m => item.Marka)</td>
                 <td>@Html.DisplayFor(m => item.koltukTipi.KoltukTipiAdi)</td>
                 <td>@Html.DisplayFor(m => item.KoltukSayisi)</td>
                 <td>@Html.DisplayFor(m => item.Seferler.LastOrDefault().nereden.DurakAdi) 'den @Html.DisplayFor(m => item.Seferler.LastOrDefault().nereye.DurakAdi) 'a gidiyor' </td>
-                <td>
-                    @Html.ActionLink("Bekleyen Sefer", "SiradakiSefer", new { id = item.OtobusId }) |
-                    @Html.ActionLink("Toplam Sefer", "ToplamSefer", new { id = item.OtobusId }) |
+                <td>@Html.ActionLink("Bekleyen Sefer", "SiradakiSefer","Sefer", new { id = item.OtobusId }, new { target = "_self", name = "link", style = "color : red" }) |
+                    @Html.ActionLink("Toplam Sefer", "ToplamSefer","Sefer", new { id = item.OtobusId }, new { target = "_self", name = "link", style = "color : red" }) |
                     @Html.ActionLink("Otobusu Kaldır", "OtobusSil", new { id = item.OtobusId })
                 </td>
             </tr>
@@ -66,7 +65,7 @@
         {
             <tr>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Plaka)
+                    @Html.ActionLink(item.Plaka, "OtobusDetay", new { id = item.OtobusId })
                 </td>
                 <td>@Html.DisplayFor(m => item.Marka)</td>
                 <td>@Html.DisplayFor(m => item.Marka)</td>
@@ -74,8 +73,8 @@
                 <td>@Html.DisplayFor(m => item.KoltukSayisi)</td>
                 <td>Son yolculuğunda @Html.DisplayFor(m=>item.Seferler.LastOrDefault().nereye.ilce.sehir.SehirAdi) 'a gitti.</td>
                 <td>
-                    @Html.ActionLink("Bekleyen Sefer", "SiradakiSefer", new { id = item.OtobusId }) |
-                    @Html.ActionLink("Toplam Sefer", "ToplamSefer", new { id = item.OtobusId }) |
+                    @Html.ActionLink("Bekleyen Sefer", "SiradakiSefer","Sefer", new { id = item.OtobusId }, new { target = "_self", name = "link", style = "color : red" }) |
+                    @Html.ActionLink("Toplam Sefer", "ToplamSefer","Sefer", new { id = item.OtobusId }, new { target = "_self", name = "link", style = "color : red" }) |
                     @Html.ActionLink("Otobusu Kaldır", "OtobusSil", new { id = item.OtobusId })
                 </td>
             </tr>

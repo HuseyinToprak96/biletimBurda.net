@@ -96,6 +96,8 @@
   <ItemGroup>
     <Content Include="Content\Site.css" />
     <Content Include="Global.asax" />
+    <Content Include="images\audi.jpg" />
+    <Content Include="images\bmw.jpg" />
     <Content Include="images\koltuk.png" />
     <Content Include="images\logo.png" />
     <Content Include="images\seciliKoltuk.png" />
@@ -113,6 +115,8 @@
     <Content Include="Views\Sefer\SeferAra.cshtml" />
     <Content Include="Views\Sefer\SeferBul.cshtml" />
     <Content Include="Views\Bilet\Biletlerim.cshtml" />
+    <Content Include="Views\Sefer\ToplamSefer.cshtml" />
+    <Content Include="Views\Sefer\SiradakiSefer.cshtml" />
     <None Include="Views\Shared\index.cshtml" />
     <Content Include="Web.config" />
   </ItemGroup>

@@ -31,7 +31,7 @@
     <td>
         @Html.DisplayFor(modelItem => item.Tarih)
     </td>
-    <td> @Html.ActionLink(item.otobus.Plaka, "OtobusDetay", new { id = item.otobus.OtobusId })</td>
+    <td> @Html.ActionLink(item.otobus.Plaka, "OtobusDetay","Otobus", new { id = item.otobus.OtobusId }, new { target = "_blank", name = "link", style = "color : red" })</td>
     <td>
         @Html.DisplayFor(m => item.nereden.ilce.sehir.SehirAdi)
     </td>

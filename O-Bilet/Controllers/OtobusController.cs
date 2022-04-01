@@ -21,7 +21,7 @@ namespace O_Bilet.Controllers
             servis = new Servis<Otobus>(repository);
         }
         // GET: Otobüs
-        public ActionResult OtobusListesi()
+        public ActionResult OtobusListesi(int? id)
         {
             return View(servis.Tumu());
         }

@@ -15,8 +15,8 @@ namespace DataLayer
             context.KoltukTipleri.Add(new KoltukTipi { SagKoltuk = 2, SolKoltuk = 2, KoltukTipiAdi="2+2"});
             context.KoltukTipleri.Add(new KoltukTipi { SagKoltuk = 1, SolKoltuk = 2, KoltukTipiAdi = "1+2" });
             context.SaveChanges();
-            context.Otobusler.Add(new Otobus { Plaka = "41 H 4125", SuanKiDurumu="Yolda", Marka="Mercedes", Model="Y", KoltukSayisi = 40, KoltukTipiId = 1 });
-            context.Otobusler.Add(new Otobus { Plaka = "41 T 1225", Marka="BMW", Model="X", KoltukSayisi = 30, KoltukTipiId = 2 });
+            context.Otobusler.Add(new Otobus { Plaka = "41 H 4125", OtobusResmi="/../images/bmw.jpg", SuanKiDurumu="Yolda", Marka="Mercedes", Model="Y", KoltukSayisi = 40, KoltukTipiId = 1 });
+            context.Otobusler.Add(new Otobus { Plaka = "41 T 1225", OtobusResmi="/../images/audi.jpg", SuanKiDurumu="", Marka="BMW", Model="X", KoltukSayisi = 30, KoltukTipiId = 2 });
             context.SaveChanges();
             context.Sehirler.Add(new Sehir { SehirAdi = "Kocaeli" });
             context.Sehirler.Add(new Sehir { SehirAdi = "Karabük" });
