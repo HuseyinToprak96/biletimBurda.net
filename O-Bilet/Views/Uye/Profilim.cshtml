@@ -1,0 +1,95 @@
+﻿@model EntityLayer.Uye
+
+@{
+    ViewBag.Title = "Profilim";
+    Layout = "~/Views/Shared/index.cshtml";
+}
+
+<h1>Profilim</h1>
+
+<table class="table">
+    <tr>
+        <td>
+            <h3> <strong>Ad:</strong> </h3>
+        </td>
+        <td>
+            <input type="submit" value="@Model.UyeAdi" id="t1" name="adi" onclick="degistir(this)"/><button disabled id="b_t1" onclick="onayla('t1',this)">Onayla</button>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <h3> <strong>Soyad:</strong> </h3>
+        </td>
+        <td>
+            <input type="submit" value="@Model.Soyad" id="t2" name="soyadi" onclick="degistir(this)" /><button disabled id="b_t2" onclick="onayla('t2', this)">Onayla</button>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <h3> <strong>Telefon:</strong> </h3>
+        </td>
+        <td>
+            <input type="submit" value="@Model.Telefon" id="t3" name="tel" onclick="degistir(this)" /><button disabled id="b_t3" onclick="onayla('t3', this)">Onayla</button>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <h3><strong>E-Posta:</strong> </h3>
+        </td>
+        <td width="800px">
+            <input type="submit" value="@Model.Eposta" id="t4" name="eposta" onclick="degistir(this)" /><button disabled id="b_t4" onclick="onayla('t4', this)">Onayla</button>
+        </td>
+    </tr>
+    <tr>
+        <td colspan="2" style="text-align:center">
+            <input type="submit" value="Kaydet" style="background-color:darkolivegreen;font-size:15px;"/>
+        </td>
+        
+    </tr>
+</table>
+<style>
+    .txtProfil{
+        height:50px;
+        background-color:cadetblue;
+        
+    }
+    table tr td:nth-child(2n){
+        text-align:left;
+    }
+    table tr td:nth-child(2n+1){
+        text-align:right;
+    }
+    input[type="submit"]{
+        height:120px;
+    }
+    input[type="text"]{
+        border:0 solid;
+        background-color:beige;
+        width:120px;
+    }
+        input[type="text"]:focus{
+            border:0 solid;
+            height:30px;
+        }
+        input[type="submit"]:nth-child(2n+1) {
+            width: 120px;
+            height: 30px;
+            background-color: cornflowerblue;
+        }
+    button {
+        width: 80px;
+        height: 30px;
+        background-color:cadetblue;
+    }
+</style>
+<script>
+    function degistir(btn) {
+        btn.type = "text";
+        var buton = document.getElementById("b_" + btn.id).disabled = false;
+    }
+    function onayla(id,btn) {
+        var nesne = document.getElementById(id);
+        nesne.type = "submit";
+        btn.disabled = true;
+    }
+</script>

@@ -1,0 +1,31 @@
+﻿@model BusinessLogisLayer.ViewModels.VMDurakEkle
+
+@{
+    ViewBag.Title = "YeniDurakEkle";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>YeniDurakEkle</h2>
+
+@using (Html.BeginForm("YeniDurakEkle", "Durak",FormMethod.Post))
+{
+    <table class="table">
+        <tr>
+            <td>Durak Adı</td>
+            <td>@Html.TextBoxFor(m=>m.durak.DurakAdi)</td>
+        </tr>
+        <tr>
+            <td>Ilce Sec</td>
+            <td>@Html.DropDownListFor(m=>m.durak.IlceId,(SelectList)Model.Ilceler)</td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <input type="submit" value="Durak Ekle" />
+            </td>
+        </tr>
+    </table>
+}
+
+<script src="~/Scripts/jquery-3.4.1.min.js"></script>
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>

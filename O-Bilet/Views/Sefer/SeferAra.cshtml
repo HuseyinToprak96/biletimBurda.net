@@ -1,0 +1,206 @@
+﻿@model BusinessLogisLayer.ViewModels.VM_SeferUye
+@{
+    ViewBag.Title = "SeferAra";
+    Layout = "~/Views/Shared/index.cshtml";
+}
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+
+<div class="container">
+    @if (Model.Seferler.Count > 0)
+    {
+        <h2>Bu Rotada Bugün Toplam @Model.Seferler.Count Otobüs Vardır.</h2>
+        <p><strong>Açıklama:</strong> Otobüsümüzde ön ve orta olmak üzere toplamda 2 adet çıkış ve giriş kapısı bulunmaktadır. Yolculuğumuzda toplamda 3 sefer mola verilecektir. Molalarımız sırasıyla 10 30 ve 10 ar dakikadan oluşmaktadır. İkram olarak bugün Patronumuz bonkör davranmış olup siz değerli yolcularımıza baklava ve çay ikramı yapılacaktır. Sevgilerimizle Bu-Bilet </p>
+       
+        <div class="panel-group" id="accordion">
+
+            @foreach (var sefer in Model.Seferler)
+            {
+
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">
+                            <button class="btnGoster" onclick="ac(this)" value="@sefer.SeferId">
+                                Goster
+                            </button>
+                            <a data-toggle="collapse" data-parent="#accordion" href=#collapse@sefer.SeferId><strong>Araç Tipi:</strong>@sefer.otobus.koltukTipi.KoltukTipiAdi<strong style="margin-left:50px">Tarih:</strong>@sefer.Tarih <strong>Sefer Saati:</strong>@sefer.Saat</a>
+                        </h4>
+                    </div>
+                    <div id="collapse1" class="panel-collapse collapse in">
+                        <div class="panel-body" style="margin-left:10px">
+                            <div id="@sefer.SeferId" style="display:none">
+                                <div class="comp cont">
+                                    @for (int i = 0; i < sefer.otobus.koltukTipi.SolKoltuk; i++)
+                                    {
+                                        for (int j = 0; j < sefer.Biletler.Count / (sefer.otobus.koltukTipi.SolKoltuk + sefer.otobus.koltukTipi.SagKoltuk); j++)
+                                        {
+                                            if (sefer.Biletler[(i * 10) + j].UyeId != null)
+                                            {
+                                                <button class="koltuk" disabled style="opacity:0.3;font-size:15px" value="@sefer.SeferId" onclick="koltukSec(this)">DOLU</button>
+                                            }
+                                            else
+                                            {
+                                                <button class="koltuk" value="@sefer.SeferId" onclick="koltukSec(this)">@((i*10)+j+1)</button>
+                                            }
+                                        }<br />
+                                    }<br /><br />
+                                    @for (int i = 0; i < sefer.otobus.koltukTipi.SagKoltuk; i++)
+                                    {
+                                        for (int j = 0; j < sefer.otobus.KoltukSayisi / (sefer.otobus.koltukTipi.SolKoltuk + sefer.otobus.koltukTipi.SagKoltuk); j++)
+                                        {
+                                            if (sefer.Biletler[(((i + sefer.otobus.koltukTipi.SolKoltuk) * 10) + j)].UyeId != null)
+                                            {
+                                                <button class="koltuk" disabled style="opacity:0.3;font-size:15px" value="@sefer.SeferId" onclick="koltukSec(this)">DOLU</button>
+                                            }
+                                            else
+                                            {
+                                <button class="koltuk" value="@sefer.SeferId" onclick="koltukSec(this)">@(((i + sefer.otobus.koltukTipi.SolKoltuk) * 10) + j+1)</button>
+                                            }
+                                     
+                                        }<br />
+                                    }
+                                </div>
+                                <div class="comp">
+                                    <table class="tblSefer">
+                                        <tr>
+                                            <td><strong>Sefer Numarası:</strong></td>
+                                            <td></td>
+
+                                        </tr>
+                                        <tr>
+                                            <td><strong>Koltuk Numarası:</strong><input type="hidden" name="seferId" value="@sefer.SeferId" /><input type="hidden" name="tarih" value="@sefer.Tarih" /><input type="hidden" name="saat" value="@sefer.Saat" /></td>
+                                            <td>@Html.LabelFor(m => m.bilet.KoltukNumarasi, new { @id = "koltukNo" + sefer.SeferId })</td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="2" style="text-align:center">
+                                                @if (Session["ID"] == null)
+                                                {
+                                                    <button disabled class="btn_bilet" value="@sefer.SeferId" onclick="biletAl(this)">Bilet Al</button>
+                                                }
+                                                else if (Session["ID"] != null)
+                                                {
+                                                    <button class="btn_bilet" disabled id="btn_@sefer.SeferId" value="@sefer.SeferId" onclick="biletAl(this)">Bilet Al</button>
+                                                }
+                                            </td>
+                                        </tr>
+                                    </table>
+                                    @using (Html.BeginForm("BiletAl", "Bilet", FormMethod.Post))
+                                    {
+                                        <input type="hidden" name="seferId" value="@sefer.SeferId" />
+                                        <input type="hidden" id="txt_@sefer.SeferId" name="koltukN" />
+                                        <table class="table tblOdeme" id="tbl_@sefer.SeferId">
+                                            <tr>
+                                                <td>
+                                                    <strong>KartNumarası:</strong>
+                                                </td>
+                                                <td><input type="text"></td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <strong>Son Kullanma Tarihi:</strong>
+                                                </td>
+                                                <td><input type="text"></td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <strong>CVC:</strong>
+
+                                                </td>
+                                                <td><input type="text"></td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="2"><button class="odemeYap">Ödeme Yap</button></td>
+                                            </tr>
+                                        </table>
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>}
+
+        </div>}
+    else {
+    <div>
+        Bu rotada otobüs yoktur.
+    </div>}
+</div>
+<style>
+    .tblOdeme{
+        display:none;
+    }
+    .tblSefer td{
+        width:130px;
+        text-align:left;
+    }
+    .odemeYap{
+        height:30px;
+        width:100px;
+        text-align:center;
+        background-color:darkseagreen;
+    }
+    .btn_bilet{
+        height:30px;
+        width:80px;
+        background-color:cornflowerblue;
+        color:whitesmoke;
+    }
+    .koltuk{
+        width:70px;
+        height:70px;
+        background-image:url(../../images/koltuk.png);
+    }
+    .comp{
+        float:left;
+    }
+    button{
+        color:whitesmoke;
+    }
+    .btnGoster{
+        color:orangered;
+    }
+</style>
+<script>
+    function ac(btn) {
+        var cont = document.getElementById(btn.value);
+        if (btn.innerText == "Goster") {
+            btn.innerText = "Gizle";
+            cont.style.display = "block";
+        }
+        else {
+            btn.innerText = "Goster";
+            cont.style.display = "none";
+        }
+
+    }
+    function koltukSec(koltuk) {
+        var k = document.getElementById("koltukNo" + koltuk.value);
+        var btn = document.getElementById("btn_" + koltuk.value);
+        btn.disabled = false;
+        var txtKoltukno = document.getElementById("txt_"+koltuk.value);
+        secilmemisKoltuk();
+        k.innerText = koltuk.innerText;
+        txtKoltukno.value = koltuk.innerText;
+        koltuk.disabled = true;
+        koltuk.style.opacity = 0.3;
+        k.style.display = "block";
+    }
+    function secilmemisKoltuk() {
+        var koltuklar = document.getElementsByClassName("koltuk");
+        for (var i = 0; i < koltuklar.length; i++) {
+            if (koltuklar[i].innerText != "DOLU") {
+            koltuklar[i].style.opacity = 1;
+                koltuklar[i].disabled = false;
+            }
+        }
+    }
+    function biletAl(btn) {
+        var tablo = document.getElementById("tbl_" + btn.value);
+        if (tablo.style.display == "block")
+            tablo.style.display = "none";
+        else
+            tablo.style.display = "block";
+    }
+</script>

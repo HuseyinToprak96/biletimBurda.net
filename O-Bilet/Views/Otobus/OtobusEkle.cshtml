@@ -1,0 +1,64 @@
+﻿@model BusinessLogisLayer.ViewModels.VMOtobusEkle
+
+@{
+    ViewBag.Title = "OtobusEkle";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>OtobusEkle</h2>
+
+
+@using (Html.BeginForm("OtobusEkle","Otobus",FormMethod.Post)) 
+{
+<table class="table">
+    <tr>
+        <td>
+            Plaka
+        </td>
+        <td>
+            @Html.TextBoxFor(m => m.otobus.Plaka, new { @placeholder = "Plaka Giriniz..." })
+        </td>
+    </tr>
+    <tr>
+        <td>
+            Marka
+        </td>
+        <td>
+            @Html.TextBoxFor(m => m.otobus.Marka, new { @placeholder = "Marka Giriniz..." })
+        </td>
+    </tr>
+    <tr>
+        <td>
+            Model
+        </td>
+        <td>
+            @Html.TextBoxFor(m => m.otobus.Model, new { @placeholder = "Model Giriniz..." })
+        </td>
+    </tr>
+    <tr>
+        <td>
+            Koltuk Sayisi
+        </td>
+        <td>
+            @Html.TextBoxFor(m => m.otobus.KoltukSayisi, new { @placeholder = "Koltuk Sayısını Giriniz..." })
+        </td>
+    </tr>
+    <tr>
+        <td>
+            Koltuk Tipleri
+        </td>
+        <td>
+            @Html.DropDownListFor(k => k.otobus.KoltukTipiId,(SelectList)Model.KoltukTipleri)
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <input type="submit" value="Otobüs Ekle"/>
+        </td>
+    </tr>
+</table>
+}
+
+<script src="~/Scripts/jquery-3.4.1.min.js"></script>
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>

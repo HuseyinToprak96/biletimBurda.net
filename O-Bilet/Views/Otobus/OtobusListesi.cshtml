@@ -1,0 +1,89 @@
+﻿@model IEnumerable<EntityLayer.Otobus>
+
+@{
+    ViewBag.Title = "OtobusListesi";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>OtobusListesi</h2>
+
+<p>
+    @Html.ActionLink("Otobus Ekle", "OtobusEkle","Otobus")
+</p>
+<table class="table">
+
+    <tr><th colspan="6"><h3><strong>HARAKET HALİNDEKİ ARAÇLAR</strong></h3></th></tr>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Plaka)
+        </th>
+        <th>@Html.DisplayNameFor(m => m.Marka)</th>
+        <th>@Html.DisplayNameFor(m => m.Model)</th>
+        <th>@Html.DisplayNameFor(m => m.koltukTipi.KoltukTipiAdi)</th>
+        <th>@Html.DisplayNameFor(m => m.KoltukSayisi)</th>
+        <th>Şuanki Konum</th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        if (item.SuanKiDurumu == "Yolda")
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Plaka)
+                </td>
+                <td>@Html.DisplayFor(m => item.Marka)</td>
+                <td>@Html.DisplayFor(m => item.Marka)</td>
+                <td>@Html.DisplayFor(m => item.koltukTipi.KoltukTipiAdi)</td>
+                <td>@Html.DisplayFor(m => item.KoltukSayisi)</td>
+                <td>@Html.DisplayFor(m => item.Seferler.LastOrDefault().nereden.DurakAdi) 'den @Html.DisplayFor(m => item.Seferler.LastOrDefault().nereye.DurakAdi) 'a gidiyor' </td>
+                <td>
+                    @Html.ActionLink("Bekleyen Sefer", "SiradakiSefer", new { id = item.OtobusId }) |
+                    @Html.ActionLink("Toplam Sefer", "ToplamSefer", new { id = item.OtobusId }) |
+                    @Html.ActionLink("Otobusu Kaldır", "OtobusSil", new { id = item.OtobusId })
+                </td>
+            </tr>
+        }
+    }
+    @if (Model.Count(o => o.SuanKiDurumu == "Yolda") == 0)
+    {
+        <tr><td colspan="6">Suanda sefer yapan arac bulunmamaktadır.</td></tr>
+    }
+    <tr><th colspan="6"><h3><strong>BOŞTAKI OTOBUSLER</strong></h3></th></tr>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Plaka)
+        </th>
+        <th>@Html.DisplayNameFor(m => m.Marka)</th>
+        <th>@Html.DisplayNameFor(m => m.Model)</th>
+        <th>@Html.DisplayNameFor(m => m.koltukTipi.KoltukTipiAdi)</th>
+        <th>@Html.DisplayNameFor(m => m.KoltukSayisi)</th>
+        <th>Şuanki Konum</th>
+    </tr>
+    @foreach (var item in Model)
+    {
+
+        if (item.SuanKiDurumu != "Yolda")
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Plaka)
+                </td>
+                <td>@Html.DisplayFor(m => item.Marka)</td>
+                <td>@Html.DisplayFor(m => item.Marka)</td>
+                <td>@Html.DisplayFor(m => item.koltukTipi.KoltukTipiAdi)</td>
+                <td>@Html.DisplayFor(m => item.KoltukSayisi)</td>
+                <td>Son yolculuğunda @Html.DisplayFor(m=>item.Seferler.LastOrDefault().nereye.ilce.sehir.SehirAdi) 'a gitti.</td>
+                <td>
+                    @Html.ActionLink("Bekleyen Sefer", "SiradakiSefer", new { id = item.OtobusId }) |
+                    @Html.ActionLink("Toplam Sefer", "ToplamSefer", new { id = item.OtobusId }) |
+                    @Html.ActionLink("Otobusu Kaldır", "OtobusSil", new { id = item.OtobusId })
+                </td>
+            </tr>
+        }
+    }
+    @if (Model.Count(o => o.SuanKiDurumu != "Yolda") == 0)
+    {
+        <tr><td colspan="6">Suanda Butun Araclar Seferdedir.</td></tr>
+    }
+
+</table>

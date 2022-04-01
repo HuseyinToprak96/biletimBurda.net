@@ -1,0 +1,60 @@
+﻿@model IEnumerable<EntityLayer.Otobus>
+@{
+    ViewBag.Title = "YonetimPaneli";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>YonetimPaneli</h2>
+<section>
+    <aside>
+        <div id="yonetimLinks">
+            <a href="/Otobus/OtobusListesi"> <div class="yonetimLink">Otobus Kontrol</div></a>
+            <a href="/Sefer/Seferler"><div class="yonetimLink">Sefer Kontrol</div></a>
+            <a href="/Durak/Duraklar"><div class="yonetimLink">Durak Kontrol</div></a>
+            <a href="/Uye/Uyeler"><div class="yonetimLink">Uye Kontrol</div></a>
+        </div>
+    </aside>
+    <article>
+        <div id="title"><h3><strong>Son Haraketler</strong></h3></div>
+        <div id="content">
+            <table class="table">
+                <tr>
+                    <td>
+                        
+                    </td>
+                </tr>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            <strong> @item.Plaka</strong> Plakalı araç; şuan da<strong> @item.Seferler.LastOrDefault().nereden.DurakAdi</strong> 'den <strong>@item.Seferler.LastOrDefault().nereye.DurakAdi</strong> 'e gitmektedir.  
+                        </td>
+                    </tr>
+                }
+            </table>
+        </div>
+    </article>
+</section>
+<style>
+    section{
+        display:grid;
+        grid-template-columns:20% 80%;
+        height:max-content;
+        width:100%;
+    }
+    .yonetimLink{
+        width:200px;
+        height:50px;
+        text-align:center;
+        padding-top:15px;
+        font-size:20px;
+        margin-top:10px;
+    }
+    article{
+        display:grid;
+        grid-template-rows:20% 80%;
+    }
+</style>
+<script>
+
+</script>

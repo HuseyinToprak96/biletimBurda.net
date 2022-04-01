@@ -1,0 +1,57 @@
+﻿@model BusinessLogisLayer.ViewModels.VMseferEkle
+
+@{
+    ViewBag.Title = "SeferEkle";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>SeferEkle</h2>
+
+
+@using (Html.BeginForm("SeferEkle", "Sefer", FormMethod.Post))
+{
+<table class="table">
+    <tr>
+        <td>Otobus Sec:</td>
+        <td>@Html.DropDownListFor(s => s.sefer.OtobusId,(SelectList)Model.Otobusler)</td>
+        <td>@Html.ActionLink("Yeni Otobus Ekle", "OtobusEkle", "Otobus")</td>
+    </tr>
+    <tr>
+        <td>
+            Kalkıs Noktasi:
+        </td>
+        <td>
+            @Html.DropDownListFor(d => d.sefer.neredenId, (SelectList)Model.Nereden)
+        </td>
+        <td>@Html.ActionLink("Yeni Durak Ekle", "YeniDurakEkle", "Durak")</td>
+    </tr>
+    <tr>
+        <td>
+            Varis Noktasi:
+        </td>
+        <td>
+            @Html.DropDownListFor(d => d.sefer.nereyeId, (SelectList)Model.Nereye)
+        </td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>
+            Sefer Tarihi:
+        </td>
+        <td>@Html.TextBoxFor(m=>m.sefer.Tarih)</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>Sefer Saati</td>
+        <td>@Html.TextBoxFor(m=>m.sefer.Saat)</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td colspan="3" style="text-align:center"><input type="submit" value="Sefer Ekle"/></td>
+    </tr>
+</table>
+}
+
+<script src="~/Scripts/jquery-3.4.1.min.js"></script>
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>

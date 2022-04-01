@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+  <style>
+    body{
+margin: 0px;
+padding: 0px;
+    }
+      .navbar-custom{
+          background-color:rgb(128, 36, 36);
+          color: blanchedalmond;
+      }
+      .navbar-custom .navbar-brand
+      .navbar-custom .navbar-text{
+          color:whitesmoke;
+        
+      }
+     nav a{
+          color: antiquewhite;
+      }
+      header{
+          width: 90%;
+          margin-left: auto;
+          margin-right: auto;
+      }
+      header img{
+          height: 450px;
+          width: 100%;
+      }
+      #boxs{
+        display: flex;
+      }
+      
+      .box{
+          height: 350px;
+          width: 25%;
+          margin-left: 30px;
+          padding-left: 15px;
+          color: black;
+          float: left;
+          background-color:white;
+          box-shadow: 8px 2px 8px 2px;
+      }
+      .box p{
+        margin-top: 20px;
+      }
+      .box img{
+        margin-left: 25px;
+      }
+      .box p a:first-child{
+        margin-top:50px ;
+      }
+      .box a img{
+        margin-left: 0px;
+        height: 20px;
+        width: 20px;
+      }
+      .boxContent{
+        width: 15%;
+      }
+  </style>
+</head>
+<body>
+
+<nav class="navbar navbar-warning navbar-custom">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="/Page/Hakkimizda"><img src="~/images/logo.png" style="margin-top:-20px;height:60px"/></a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li class="active"><a href="/Sefer/SeferBul">Anasayfa</a></li>
+      <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="/Page/Hakkimizda">Hakkimizda <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          <li><a href="/Page/Hakkimizda/#vizyon" >Vizyon</a></li>
+          <li><a href="/Page/Hakkimizda/#misyon">Misyon</a></li>
+          <li><a href="/Page/Hakkimizda/#iletisim">Iletisim</a></li>
+        </ul>
+      </li>
+      <li><a href="#">Page 2</a></li>
+    </ul>
+    <ul class="nav navbar-nav navbar-right">
+
+        @if (Session["ID"] == null)
+        {
+            <li><a href="/Uye/UyeOl" class=""><span class="glyphicon glyphicon-user"></span> Uye Ol</a></li>
+            <li><a href="/Uye/Giris"><span class="glyphicon glyphicon-log-in"></span> Giris Yap</a></li>
+        }
+        else
+        {
+            if ((bool)Session["Yetki"] == true)
+            {
+                <li><a href="/Uye/Profilim"><span class="glyphicon glyphicon-log"></span>Yönetim Paneli</a></li>
+
+            }
+            <li><a href="/Uye/Profilim"><span class="glyphicon glyphicon-log"></span>Profilim</a></li>
+
+            <li><a href="/Bilet/Biletlerim"><span class="glyphicon glyphicon-log"></span> Biletlerim</a></li>
+
+            <li><a href="/Uye/Cikis"><span class="glyphicon glyphicon-log-out"></span> Cikis Yap</a></li>
+        }
+
+
+    </ul>
+  </div>
+</nav>
+<header>
+      @RenderBody()
+    </header>
+      <!-- 1 - Her birine col-sm-12 verdik. Small ekranda her satırda bir tane olmasını istiyoruz. Yani hepsi alt alta gelecek -->
+        <!-- 2 - Her birine ayrıca col-md-3 verdik. Medium ekranda her satırda üç tane olmasını istiyoruz. -->
+      <!-- 3 - Her birine ayrıca col-lg-2 verdik. Large ekranda hepsinin tek satırda olmasını istiyoruz. -->
+      
+     <div class="container" style="margin-top: 50px;">
+       <div class="box">
+<img src="7-24.png">
+<br>
+<strong>7/24 Müşteri Hizmetleri</strong>
+<br>
+<p>JET-Gil.com ve JET-Gil Mobil Uygulamaları üzerinden yapacağınız tüm işlemlerde müşteri hizmetleri ekibimiz 7/24 yanınızda. Bir tıkla Canlı Destek başlatabilir ve yardım alabilirsiniz.
+   </p>
+      </div>
+       <div class="box">
+        <img src="7-24.png">
+        <br>
+        <strong>Güvenli Ödeme</strong>
+        <br>
+        <p>JET-Gil size tüm firmaların otobüs biletlerini sorgulama ve karşılaştırma imkanı sunar. Bu sayede bütçenize uygun otobüs biletini rahatlıkla bulabilir ve satın alabilirsiniz.</p>
+       </div>
+       <div class="box">
+        <img src="7-24.png">
+        <br>
+<strong>Her Bütçeye Uygun</strong>
+<br>
+<p>
+  JET-Gil size tüm firmaların otobüs biletlerini sorgulama ve karşılaştırma imkanı sunar. Bu sayede bütçenize uygun otobüs biletini rahatlıkla bulabilir ve satın alabilirsiniz.</p>
+       </div>
+     </div>
+     <footer style="margin-top: 100px;">
+       <div class="container">
+        <div class="box">
+         <strong> Otobus Bileti</strong><br>
+        <a href="">En Ucuz Otobus Biletleri</a><br>
+<a href="">Bilet Al</a><br>
+<a href="">Otobus Seferleri</a><br>
+<a href="">Tum Duraklar</a><br>
+<a href="">Otobus Firmalari</a><br>
+<a href="">Otogarlar</a><br>
+<a href="">Otobus Bileti Alma Rehberi</a><br>
+<a href="">Otobus Bileti Kampanyalari</a><br>
+<a href="">Minibus / Otobus Kiralama</a><br>
+
+                </div>
+                 <div class="box">
+                   <strong>JET-Gil</strong>
+                   <br>
+                 <a href="">Hakkimizda</a><br>
+                 <a href="">KVKK Aydinlatma Metni</a><br>
+                 <a href="">Otobus Kullanim Kosullari</a><br>
+                 <a href="">Odullerimiz</a><br>
+                 <a href="">Yardim ve Iletisim</a><br>
+                 <a href="">Bilet Sorgulama</a><br>
+                 <a href="">Iptal ve Degisim</a><br>
+                 </div>
+                 <div class="box">
+              <strong>Bizi Takip Edin</strong><br>
+              <a href=""><img src="twit.png">Twitter</a><br>
+              <a href=""><img src="face.png">Facebook</a><br>
+              <a href=""><img src="ins.png">Instagram</a><br>
+              <a href=""><img src="blog.png">JET-Gil Blog</a><br>
+                 </div>
+               </div>
+     </footer>
+</body>
+</html>

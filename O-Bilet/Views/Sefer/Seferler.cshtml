@@ -1,0 +1,47 @@
+﻿@model IEnumerable<EntityLayer.Sefer>
+
+@{
+    ViewBag.Title = "Seferler";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Seferler</h2>
+
+<p>
+    @Html.ActionLink("Yeni Sefer Ekle", "SeferEkle","Sefer")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Saat)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Tarih)
+        </th>
+        <th>Seferi Gerceklercek Arac</th>
+        <th>Haraket Yeri</th>
+        <th>Varış Yeri</th>
+    </tr>
+
+@foreach (var item in Model) {
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.Saat)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Tarih)
+    </td>
+    <td> @Html.ActionLink(item.otobus.Plaka, "OtobusDetay", new { id = item.otobus.OtobusId })</td>
+    <td>
+        @Html.DisplayFor(m => item.nereden.ilce.sehir.SehirAdi)
+    </td>
+    <td>
+        @Html.DisplayFor(m => item.nereye.ilce.sehir.SehirAdi)
+    </td>
+    <td>
+        @Html.ActionLink("SeferSil", "SeferSil", new { id=item.SeferId })
+    </td>
+</tr>
+}
+
+</table>

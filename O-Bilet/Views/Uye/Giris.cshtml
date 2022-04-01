@@ -1,0 +1,40 @@
+﻿@{
+    ViewBag.Title = "UyeOl";
+    Layout = "~/Views/Shared/index.cshtml";
+}
+
+
+<form action="Giris" method="post">
+    <table class="table">
+        <tr>
+            <td>
+                Mail Adresi:
+            </td>
+            <td>
+                @Html.TextBox("mail")
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Şifre:
+            </td>
+            <td>
+                @Html.TextBox("sifre")
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2"><input type="submit" value="Giriş" /></td>
+        </tr>
+        <tr>
+            <td>
+                @Html.ActionLink("UyeOl", "UyeOl", "Uye")
+            </td>
+            <td>
+                @Html.ActionLink("Şifremi Unuttum", "SifremiUnuttum", "Uye")
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2">@TempData["Hata"]</td>
+        </tr>
+    </table>
+</form>

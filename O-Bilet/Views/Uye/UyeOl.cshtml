@@ -1,0 +1,59 @@
+﻿@model BusinessLogisLayer.ViewModels.VMUyeOl
+
+@{
+    ViewBag.Title = "UyeOl";
+    Layout = "~/Views/Shared/index.cshtml";
+}
+
+<h2>UyeOl</h2>
+
+
+@using (Html.BeginForm("UyeOl", "Uye",FormMethod.Post))
+{
+<table class="table">
+    <tr>
+        <td>Ad:</td>
+        <td> @Html.TextBoxFor(u => u.uye.UyeAdi, new { @placeholder = "Adınızı Giriniz..." })</td>
+    </tr>
+    <tr>
+        <td>Soyad:</td>
+        <td> @Html.TextBoxFor(u => u.uye.Soyad, new { @placeholder = "Soyadinizi Giriniz..." })</td>
+    </tr>
+    <tr>
+        <td>Sehir:</td>
+        <td>@Html.DropDownListFor(s => s.uye.SehirId, (SelectList)Model.Sehirler)</td>
+    </tr>
+    <tr>
+        <td>E-posta:</td>
+        <td>   @Html.TextBoxFor(u => u.uye.Eposta, new { @placeholder = "E-Postanizi Giriniz..." })</td>
+    </tr>
+    <tr>
+        <td>Telefon:</td>
+        <td>@Html.TextBoxFor(u => u.uye.Telefon, new { @placeholder = "Numaranizi Giriniz..." })</td>
+    </tr>
+    <tr>
+        <td>Sifre:</td>
+        <td>@Html.TextBoxFor(u => u.uye.Sifre, new { @placeholder = "Sifrenizi Giriniz..." })</td>
+    </tr>
+    <tr>
+        <td>Sifre Tekrar:</td>
+        <td> @Html.TextBoxFor(u => u.uye.Sifre, new { @placeholder = "Sifrenizi Tekrar Giriniz..." })</td>
+    </tr>
+    <tr>
+        <td colspan="2">
+                    <input type="submit" value="Create" class="btn btn-default" />
+               
+        </td>
+    </tr>
+</table>
+}
+<script src="~/Scripts/jquery-3.4.1.min.js"></script>
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+
+<style>
+    .txt{
+        width:200px;
+        height:60px;
+    }
+</style>
