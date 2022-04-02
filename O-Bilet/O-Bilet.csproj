@@ -117,6 +117,10 @@
     <Content Include="Views\Bilet\Biletlerim.cshtml" />
     <Content Include="Views\Sefer\ToplamSefer.cshtml" />
     <Content Include="Views\Sefer\SiradakiSefer.cshtml" />
+    <Content Include="Views\Rota\Rotalar.cshtml" />
+    <Content Include="Views\KoltukTipi\KoltukTipleri.cshtml" />
+    <Content Include="Views\KoltukTipi\Ekle.cshtml" />
+    <Content Include="Views\Rota\RotaEkle.cshtml" />
     <None Include="Views\Shared\index.cshtml" />
     <Content Include="Web.config" />
   </ItemGroup>
@@ -124,7 +128,9 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\BiletController.cs" />
     <Compile Include="Controllers\DurakController.cs" />
+    <Compile Include="Controllers\KoltukTipiController.cs" />
     <Compile Include="Controllers\OtobusController.cs" />
+    <Compile Include="Controllers\RotaController.cs" />
     <Compile Include="Controllers\SayfaController.cs" />
     <Compile Include="Controllers\SeferController.cs" />
     <Compile Include="Controllers\UyeController.cs" />
@@ -146,6 +152,7 @@
     <Content Include="Views\Uye\SifremiUnuttum.cshtml" />
     <Content Include="Views\Uye\Profilim.cshtml" />
     <Content Include="Views\Yonetim\YonetimPaneli.cshtml" />
+    <Content Include="Views\Uye\UyeListesi.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

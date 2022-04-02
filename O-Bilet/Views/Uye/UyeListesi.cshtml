@@ -1,0 +1,52 @@
+﻿@model IEnumerable<EntityLayer.Uye>
+
+@{
+    ViewBag.Title = "UyeListesi";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>UyeListesi</h2>
+<table class="table" style="margin-top:10px">
+    
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Yetki)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UyeAdi)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Soyad)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Eposta)
+        </th>
+        <th>Şehir</th>
+        <th>İlçe</th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Yetki)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.UyeAdi)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Soyad)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Eposta)
+        </td>
+        
+        <td>@item.sehir.SehirAdi</td>
+        <td>@item.ilce.IlceAdi</td>
+            <td>
+            @Html.ActionLink("Kullanıcının İşlemleri", "UyeBilgileri", new { id=item.UyeId }) |
+            </td>
+    </tr>
+}
+
+</table>

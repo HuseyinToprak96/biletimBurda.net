@@ -27,7 +27,6 @@ namespace O_Bilet.Controllers
         { //Kullanıcının yetkisi tutulur.Admin ise ulaşılır.
             return View(servis.Tumu());
         }
-        [Authorize]
         public ActionResult UyeOl()
         {
             return View(_bLL.UyeOl());
@@ -58,7 +57,11 @@ namespace O_Bilet.Controllers
             servis.Guncelle(uye);
             return RedirectToAction("UyeListesi");
         }
-        [AllowAnonymous]
+        public ActionResult Profilim()
+        {
+            int id = Convert.ToInt32(Session["ID"]);
+            return View(servis.Bul(id));
+        }
         public ActionResult Giris()
         {
             return View();
@@ -86,11 +89,7 @@ namespace O_Bilet.Controllers
         }
         [AllowAnonymous]
         public ActionResult SifremiUnuttum() => View();
-        public ActionResult Profilim()
-        {
-            int id = Convert.ToInt32(Session["ID"]);
-            return View(servis.Bul(id));
-        }
+       
 
     }
 }

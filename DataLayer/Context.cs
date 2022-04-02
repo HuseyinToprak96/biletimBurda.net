@@ -21,5 +21,6 @@ namespace DataLayer
         public DbSet<Sehir> Sehirler { get; set; }
         public DbSet<Ilce> Ilceler { get; set; }
         public DbSet<Sefer> Seferler { get; set; }
+        public DbSet<Rota> Rotalar { get; set; }
     }
 }

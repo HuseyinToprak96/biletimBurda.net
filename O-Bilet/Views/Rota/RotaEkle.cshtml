@@ -1,0 +1,42 @@
+﻿@model BusinessLogisLayer.ViewModels.VMRotaEkle
+
+@{
+    ViewBag.Title = "RotaEkle";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>RotaEkle</h2>
+@using (Html.BeginForm("RotaEkle", "Rota", FormMethod.Post))
+{
+    <table class="table">
+        <tr>
+            <td>
+                Başlangıç Noktasi
+            </td>
+            <td>
+                @Html.DropDownListFor(m => m.rota.NeredenId, (SelectList)Model.Duraklar)
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Varış Noktası
+            </td>
+            <td>
+                @Html.DropDownListFor(m => m.rota.NereyeId, (SelectList)Model.Duraklar)
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Bilet Ücreti
+            </td>
+            <td>@Html.TextBoxFor(m => m.rota.Ucret)</td>
+        </tr>
+    </table>
+
+
+
+}
+
+<script src="~/Scripts/jquery-3.4.1.min.js"></script>
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>

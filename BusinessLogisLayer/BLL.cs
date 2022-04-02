@@ -45,8 +45,7 @@ namespace BusinessLogisLayer
        public VMseferEkle seferEkle()
         {
             VMseferEkle ekle = new VMseferEkle();
-            ekle.Nereden = new SelectList(db.Duraklar.OrderBy(s => s.DurakAdi), "DurakId", "DurakAdi");
-            ekle.Nereye= new SelectList(db.Duraklar.OrderBy(s => s.DurakAdi), "DurakId", "DurakAdi");
+            ekle.Rotalar = new SelectList(db.Rotalar,"RotaId","RotaId");
             ekle.Otobusler = new SelectList(db.Otobusler, "OtobusId","Plaka");
             ekle.sefer = new Sefer();
             return ekle;
@@ -61,7 +60,7 @@ namespace BusinessLogisLayer
         public VM_SeferUye seferBul(VMseferAra ara)
         {
             VM_SeferUye seferUye = new VM_SeferUye();
-            seferUye.Seferler = db.Seferler.Where(x => x.neredenId == ara.sefer.neredenId && x.nereyeId == ara.sefer.nereyeId).ToList();
+            seferUye.Seferler = db.Seferler.Where(x => x.rota.NeredenId == ara.sefer.rota.NeredenId && x.rota.NereyeId == ara.sefer.rota.NereyeId).ToList();
             seferUye.biletler = db.Biletler.ToList();
             seferUye.bilet= new Bilet();
             seferUye.bilet.KoltukNumarasi = 0;
@@ -80,6 +79,12 @@ namespace BusinessLogisLayer
           var bilet=  db.Biletler.Where(b =>b.SeferId == seferID&&b.KoltukNumarasi==koltuk).SingleOrDefault();
             bilet.UyeId = uyeID;
             db.SaveChanges();
+        }
+        public VMRotaEkle RotaEkle()
+        {
+            VMRotaEkle vMRotaEkle = new VMRotaEkle();
+            vMRotaEkle.Duraklar = new SelectList(db.Duraklar, "DurakId", "DurakAdi");
+            return vMRotaEkle;
         }
     }
 }

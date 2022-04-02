@@ -13,41 +13,33 @@
 <table class="table">
     <tr>
         <td>Otobus Sec:</td>
-        <td>@Html.DropDownListFor(s => s.sefer.OtobusId,(SelectList)Model.Otobusler)</td>
+        <td>@Html.DropDownListFor(s => s.sefer.OtobusId, (SelectList)Model.Otobusler)</td>
         <td>@Html.ActionLink("Yeni Otobus Ekle", "OtobusEkle", "Otobus")</td>
     </tr>
     <tr>
         <td>
-            Kalkıs Noktasi:
+            Rota:
         </td>
         <td>
-            @Html.DropDownListFor(d => d.sefer.neredenId, (SelectList)Model.Nereden)
+            @Html.DropDownListFor(d => d.sefer.RotaId, (SelectList)Model.Rotalar)
         </td>
-        <td>@Html.ActionLink("Yeni Durak Ekle", "YeniDurakEkle", "Durak")</td>
-    </tr>
-    <tr>
-        <td>
-            Varis Noktasi:
-        </td>
-        <td>
-            @Html.DropDownListFor(d => d.sefer.nereyeId, (SelectList)Model.Nereye)
-        </td>
-        <td></td>
+        
+        <td>@Html.ActionLink("Uygun Rotayı Seçmek için Rotaları Kontrol Et", "Rotalar", "Rota")</td>
     </tr>
     <tr>
         <td>
             Sefer Tarihi:
         </td>
-        <td>@Html.TextBoxFor(m=>m.sefer.Tarih)</td>
+        <td>@Html.TextBoxFor(m => m.sefer.Tarih)</td>
         <td></td>
     </tr>
     <tr>
         <td>Sefer Saati</td>
-        <td>@Html.TextBoxFor(m=>m.sefer.Saat)</td>
+        <td>@Html.TextBoxFor(m => m.sefer.Saat)</td>
         <td></td>
     </tr>
     <tr>
-        <td colspan="3" style="text-align:center"><input type="submit" value="Sefer Ekle"/></td>
+        <td colspan="3" style="text-align:center"><input type="submit" value="Sefer Ekle" /></td>
     </tr>
 </table>
 }

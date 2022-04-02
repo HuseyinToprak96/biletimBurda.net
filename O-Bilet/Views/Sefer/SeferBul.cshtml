@@ -13,14 +13,14 @@
     <table class="table">
         <tr>
             <td>Baslangıc Noktası:</td>
-            <td><div>@Html.DropDownListFor(m => m.sefer.neredenId, (SelectList)Model.Nereden, new { @class = "drop" })</div></td>
+            <td><div>@Html.DropDownListFor(m => m.sefer.rota.NeredenId, (SelectList)Model.Nereden, new { @class = "drop" })</div></td>
         </tr>
         <tr>
             <td>
                 Bitis Noktası:
             </td>
             <td>
-                <div>@Html.DropDownListFor(m => m.sefer.nereyeId, (SelectList)Model.Nereye, new { @class = "drop" })</div>
+                <div>@Html.DropDownListFor(m => m.sefer.rota.NereyeId, (SelectList)Model.Nereye, new { @class = "drop" })</div>
             </td>
         </tr>
         <tr><td colspan="2" style="text-align:center"> <div><input type="submit" style="height:35px; width:120px;border:none;font-size:20px; background-color:cadetblue;color:whitesmoke" value="Sefer Ara" /></div></td></tr>

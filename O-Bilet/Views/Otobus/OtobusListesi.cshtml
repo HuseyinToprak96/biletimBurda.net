@@ -7,11 +7,12 @@
 
 <h2>OtobusListesi</h2>
 
-<p>
-    @Html.ActionLink("Otobus Ekle", "OtobusEkle","Otobus")
-</p>
 <table class="table">
-
+    <tr>
+        <td colspan="6">
+            @Html.ActionLink("Otobus Ekle", "OtobusEkle", "Otobus")
+        </td>
+    </tr>
     <tr><th colspan="6"><h3><strong>HARAKET HALİNDEKİ ARAÇLAR</strong></h3></th></tr>
     <tr>
         <th>
@@ -35,7 +36,7 @@
                 <td>@Html.DisplayFor(m => item.Marka)</td>
                 <td>@Html.DisplayFor(m => item.koltukTipi.KoltukTipiAdi)</td>
                 <td>@Html.DisplayFor(m => item.KoltukSayisi)</td>
-                <td>@Html.DisplayFor(m => item.Seferler.LastOrDefault().nereden.DurakAdi) 'den @Html.DisplayFor(m => item.Seferler.LastOrDefault().nereye.DurakAdi) 'a gidiyor' </td>
+                <td>@Html.DisplayFor(m => item.Seferler.LastOrDefault().rota.nereden.DurakAdi) 'den @Html.DisplayFor(m => item.Seferler.LastOrDefault().rota.nereye.DurakAdi) 'a gidiyor' </td>
                 <td>@Html.ActionLink("Bekleyen Sefer", "SiradakiSefer","Sefer", new { id = item.OtobusId }, new { target = "_self", name = "link", style = "color : red" }) |
                     @Html.ActionLink("Toplam Sefer", "ToplamSefer","Sefer", new { id = item.OtobusId }, new { target = "_self", name = "link", style = "color : red" }) |
                     @Html.ActionLink("Otobusu Kaldır", "OtobusSil", new { id = item.OtobusId })
@@ -71,7 +72,7 @@
                 <td>@Html.DisplayFor(m => item.Marka)</td>
                 <td>@Html.DisplayFor(m => item.koltukTipi.KoltukTipiAdi)</td>
                 <td>@Html.DisplayFor(m => item.KoltukSayisi)</td>
-                <td>Son yolculuğunda @Html.DisplayFor(m=>item.Seferler.LastOrDefault().nereye.ilce.sehir.SehirAdi) 'a gitti.</td>
+                <td>Son yolculuğunda @Html.DisplayFor(m=>item.Seferler.LastOrDefault().rota.nereye.ilce.sehir.SehirAdi) 'a gitti.</td>
                 <td>
                     @Html.ActionLink("Bekleyen Sefer", "SiradakiSefer","Sefer", new { id = item.OtobusId }, new { target = "_self", name = "link", style = "color : red" }) |
                     @Html.ActionLink("Toplam Sefer", "ToplamSefer","Sefer", new { id = item.OtobusId }, new { target = "_self", name = "link", style = "color : red" }) |

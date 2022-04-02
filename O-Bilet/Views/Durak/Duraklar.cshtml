@@ -6,11 +6,10 @@
 }
 
 <h2>Duraklar</h2>
-
-<p>
-    @Html.ActionLink("Create New", "YeniDurakEkle")
-</p>
 <table class="table">
+    <tr>
+        <td colspan="4"> @Html.ActionLink("Yeni Durak", "YeniDurakEkle")</td>
+    </tr>
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.DurakAdi)

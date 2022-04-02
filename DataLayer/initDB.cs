@@ -30,17 +30,21 @@ namespace DataLayer
             context.Duraklar.Add(new Durak { IlceId = 1, DurakAdi = "Gebze Terminal" });
             context.Duraklar.Add(new Durak { IlceId = 2, DurakAdi = "Safranbolu Terminali" });
             context.SaveChanges();
-            context.Seferler.Add(new Sefer { OtobusId = 1, neredenId = 1, nereyeId = 2, Saat = "12:00", Tarih = "29/03/2022" });
-
-            context.Seferler.Add(new Sefer { OtobusId = 2, neredenId = 1, nereyeId = 2, Saat = "15:00", Tarih = "29/03/2022" });
+            context.Rotalar.Add(new Rota { NeredenId = 1, NereyeId = 2, Ucret = 100 });
+            context.Rotalar.Add(new Rota { NeredenId = 2, NereyeId = 1, Ucret = 120 });
             context.SaveChanges();
-            for (int i = 1; i <=40; i++)
+            Sefer sefer1 = new Sefer { OtobusId = 1, RotaId = 1, Saat = "12:00", Tarih = "29/03/2022" };
+            context.Seferler.Add(sefer1);
+            Sefer sefer2 = new Sefer { OtobusId = 2, RotaId = 2, Saat = "15:00", Tarih = "29/03/2022" };
+            context.Seferler.Add(sefer2);
+            context.SaveChanges();
+            for (int i = 1; i <=sefer1.otobus.KoltukSayisi; i++)
             {
-                context.Biletler.Add(new Bilet { SeferId = 1, KoltukNumarasi = i });
+                context.Biletler.Add(new Bilet { SeferId = 1, KoltukNumarasi = i, Ucret=sefer1.rota.Ucret });
             }
-            for (int i = 1; i <= 30; i++)
+            for (int i = 1; i <= sefer2.otobus.KoltukSayisi; i++)
             {
-                context.Biletler.Add(new Bilet { SeferId = 2, KoltukNumarasi = i});
+                context.Biletler.Add(new Bilet { SeferId = 2, KoltukNumarasi = i, UyeId=1, Ucret=sefer2.rota.Ucret});
             }
             context.SaveChanges();
         }
