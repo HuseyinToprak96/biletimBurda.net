@@ -1,0 +1,38 @@
+﻿@model IEnumerable<EntityLayer.Rota>
+
+@{
+    ViewBag.Title = "Rotalar";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Rotalar</h2>
+
+    
+<table class="table">
+    <tr><td colspan="4">@Html.ActionLink("Yeni Rota", "Create")</td></tr>
+    <tr>
+        <th>@Html.DisplayNameFor(model =>model.RotaId )</th>
+        <th>Kalkış Noktası</th>
+        <th>Varis Noktasi</th>
+        <th>Bilet Ücreti</th>
+    </tr>
+   
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @item.RotaId
+        </td>
+        <td>
+            @item.nereden.DurakAdi
+        </td>
+        <td>
+            @item.nereye.DurakAdi
+        </td>
+        <td>@item.Ucret</td>
+        <td>
+            @Html.ActionLink("Sil", "RotaSil", new { id=item.RotaId })
+        </td>
+    </tr>
+}
+
+</table>

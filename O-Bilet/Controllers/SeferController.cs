@@ -52,5 +52,13 @@ namespace O_Bilet.Controllers
             servis.Guncelle(sefer);
             return RedirectToAction("Seferler");
         }
+        public ActionResult SiradakiSefer(int id)
+        {
+            return View(servis.Tumu().Where(o=>o.OtobusId==id));//TARİH AYARLARI EKLENCEK.. O OTOBUSE AİT BUGUNDEN SONRAKİ SEFERLER...
+        }
+        public ActionResult ToplamSefer(int id)
+        {
+            return View(servis.Tumu().Where(o=>o.OtobusId==id));
+        }
     }
 }

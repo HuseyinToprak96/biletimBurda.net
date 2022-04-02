@@ -7,10 +7,11 @@
 
 <h2>Seferler</h2>
 
-<p>
-    @Html.ActionLink("Yeni Sefer Ekle", "SeferEkle","Sefer")
-</p>
+
 <table class="table">
+    <tr>
+        <td colspan="5"> @Html.ActionLink("Yeni Sefer Ekle", "SeferEkle", "Sefer")</td>
+    </tr>
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.Saat)
@@ -21,6 +22,8 @@
         <th>Seferi Gerceklercek Arac</th>
         <th>Haraket Yeri</th>
         <th>Varış Yeri</th>
+        <th>Yolcu Sayısı</th>
+        <th>Net Kazanç</th>
     </tr>
 
 @foreach (var item in Model) {
@@ -31,16 +34,19 @@
     <td>
         @Html.DisplayFor(modelItem => item.Tarih)
     </td>
-    <td> @Html.ActionLink(item.otobus.Plaka, "OtobusDetay", new { id = item.otobus.OtobusId })</td>
+    <td> @Html.ActionLink(item.otobus.Plaka, "OtobusDetay","Otobus", new { id = item.otobus.OtobusId }, new { target = "_blank", name = "link", style = "color : red" })</td>
     <td>
-        @Html.DisplayFor(m => item.nereden.ilce.sehir.SehirAdi)
+        @Html.DisplayFor(m => item.rota.nereden.ilce.sehir.SehirAdi)
     </td>
     <td>
-        @Html.DisplayFor(m => item.nereye.ilce.sehir.SehirAdi)
+        @Html.DisplayFor(m => item.rota.nereye.ilce.sehir.SehirAdi)
     </td>
+    <td>@item.Biletler.Count(s=>s.UyeId!=null)</td>
+    <td>@(item.Biletler.Count(s=>s.UyeId!=null)*item.rota.Ucret)</td>
     <td>
         @Html.ActionLink("SeferSil", "SeferSil", new { id=item.SeferId })
     </td>
+ 
 </tr>
 }
 

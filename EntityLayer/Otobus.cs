@@ -9,6 +9,7 @@ namespace EntityLayer
    public class Otobus
     {
         public int OtobusId { get; set; }
+        public string OtobusResmi { get; set; }
         public string Marka { get; set; }
         public string Model { get; set; }
         public string Plaka { get; set; }

@@ -48,7 +48,7 @@
             Koltuk Tipleri
         </td>
         <td>
-            @Html.DropDownListFor(k => k.otobus.KoltukTipiId,(SelectList)Model.KoltukTipleri)
+            @Html.DropDownListFor(k => k.otobus.KoltukTipiId,(SelectList)Model.KoltukTipleri)@Html.ActionLink("Koltuk Tipi Ekle","Ekle","KoltukTipi")
         </td>
     </tr>
     <tr>

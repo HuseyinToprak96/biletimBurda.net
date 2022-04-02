@@ -12,6 +12,7 @@ namespace EntityLayer
         public int? SeferId { get; set; }
         public int? UyeId { get; set; }
         public int KoltukNumarasi { get; set; }
+        public decimal Ucret { get; set; }
         public virtual Uye uye { get; set; }
         public virtual Sefer sefer { get; set; }
     }

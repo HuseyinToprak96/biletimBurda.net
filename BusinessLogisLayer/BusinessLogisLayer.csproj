@@ -76,6 +76,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModels\VMDurakEkle.cs" />
     <Compile Include="ViewModels\VMOtobusEkle.cs" />
+    <Compile Include="ViewModels\VMRotaEkle.cs" />
     <Compile Include="ViewModels\VMseferAra.cs" />
     <Compile Include="ViewModels\VMseferEkle.cs" />
     <Compile Include="ViewModels\VMUyeOl.cs" />

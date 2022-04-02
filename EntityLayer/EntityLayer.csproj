@@ -50,6 +50,7 @@
     <Compile Include="KoltukTipi.cs" />
     <Compile Include="Otobus.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Rota.cs" />
     <Compile Include="Sefer.cs" />
     <Compile Include="Sehir.cs" />
     <Compile Include="Uye.cs" />

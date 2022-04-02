@@ -20,7 +20,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                @Html.ActionLink("Yönetim Paneli", "YonetimPaneli", "Yonetim", new { area = "" }, new { @class = "navbar-brand" })
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
@@ -28,11 +28,25 @@
             </div>
         </div>
     </div>
-
     <div class="container body-content">
-        @RenderBody()
+        <section>
+            <aside>
+                <div id="yonetimLinks">
+                    <a href="/Otobus/OtobusListesi"> <div class="yonetimLink">Otobus Kontrol</div></a>
+                    <a href="/Sefer/Seferler"><div class="yonetimLink">Sefer Kontrol</div></a>
+                    <a href="/Durak/Duraklar"><div class="yonetimLink">Durak Kontrol</div></a>
+                    <a href="/Uye/UyeListesi"><div class="yonetimLink">Uye Kontrol</div></a>
+                    <a href="/Sefer/SeferBul"><div class="yonetimLink">Kullanıcı Modu</div></a>
+                </div>
+            </aside>
+            <article>
+                @RenderBody()
+            </article>
+        </section>
+
+       
         <hr />
-        <footer>
+        <footer style="margin-top:50px;">
             <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
         </footer>
     </div>
@@ -41,3 +55,33 @@
     <script src="~/Scripts/bootstrap.min.js"></script>
 </body>
 </html>
+<style>
+    #yonetimLinks a {
+        float: left;
+        margin-left: 10px;
+    }
+
+    section {
+        display: grid;
+        grid-template-rows: 20%;
+        height: max-content;
+        max-height:2000px;
+        width: 100%;
+    }
+    section table{
+        margin-top:20px
+    }
+    .yonetimLink {
+        width: 200px;
+        height: 50px;
+        text-align: center;
+        padding-top: 15px;
+        font-size: 20px;
+        margin-top: 10px;
+    }
+
+    article {
+        display: grid;
+        grid-template-rows: 20% 80%;
+    }
+</style>

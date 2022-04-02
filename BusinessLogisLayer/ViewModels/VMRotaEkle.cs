@@ -8,10 +8,9 @@ using System.Web.Mvc;
 
 namespace BusinessLogisLayer.ViewModels
 {
-   public class VMseferEkle
+  public class VMRotaEkle
     {
-        public Sefer sefer { get; set; }
-        public SelectList Rotalar { get; set; }
-        public SelectList Otobusler { get; set; }
+        public Rota rota { get; set; }
+        public SelectList Duraklar { get; set; }
     }
 }
