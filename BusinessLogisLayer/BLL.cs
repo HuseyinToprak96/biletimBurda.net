@@ -7,7 +7,6 @@ using System.Threading.Tasks;
 using EntityLayer;
 using DataLayer;
 using System.Web.Mvc;
-
 namespace BusinessLogisLayer
 {
     public class BLL

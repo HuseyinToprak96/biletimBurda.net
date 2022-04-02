@@ -24,8 +24,8 @@ namespace DataLayer
             context.Ilceler.Add(new Ilce { SehirId = 1, IlceAdi = "Gebze" });
             context.Ilceler.Add(new Ilce { SehirId = 2, IlceAdi = "Safranbolu" });
             context.SaveChanges();
-            context.Uyeler.Add(new Uye { UyeAdi = "Mert", Soyad = "Dönmez", IlceId=1,SehirId=1, Telefon = 53146, Sifre="a1", Eposta = "mert@hotmail.com",Yetki=false });
-            context.Uyeler.Add(new Uye { UyeAdi = "Mert", Soyad = "Dönmez", IlceId = 1, SehirId = 1, Telefon = 53146, Sifre = "a11", Eposta = "mert1@hotmail.com", Yetki = true });
+            context.Uyeler.Add(new Uye { UyeAdi = "Mert", Soyad = "Dönmez", IlceId=1,SehirId=1, Telefon = 5314612454, Sifre="a1", Eposta = "mert@hotmail.com",Yetki=false });
+            context.Uyeler.Add(new Uye { UyeAdi = "Mert", Soyad = "Dönmez", IlceId = 1, SehirId = 1, Telefon = 5314612152, Sifre = "a11", Eposta = "mert1@hotmail.com", Yetki = true });
             context.SaveChanges();
             context.Duraklar.Add(new Durak { IlceId = 1, DurakAdi = "Gebze Terminal" });
             context.Duraklar.Add(new Durak { IlceId = 2, DurakAdi = "Safranbolu Terminali" });
@@ -47,6 +47,7 @@ namespace DataLayer
                 context.Biletler.Add(new Bilet { SeferId = 2, KoltukNumarasi = i, UyeId=1, Ucret=sefer2.rota.Ucret});
             }
             context.SaveChanges();
+           
         }
     }
 }

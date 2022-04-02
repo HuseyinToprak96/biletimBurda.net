@@ -35,7 +35,7 @@ namespace O_Bilet.Controllers
         public ActionResult UyeOl(VMUyeOl vM)
         {
             servis.Ekle(vM.uye);
-            return RedirectToAction("../Sefer/SeferBul");
+            return RedirectToAction("Giris");
         }
         public ActionResult UyeBilgileri(int id)
         {

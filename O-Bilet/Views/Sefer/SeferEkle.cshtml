@@ -30,12 +30,12 @@
         <td>
             Sefer Tarihi:
         </td>
-        <td>@Html.TextBoxFor(m => m.sefer.Tarih)</td>
+        <td>@Html.TextBoxFor(m => m.sefer.Tarih,new { @placeholder="gun/ay/yıl şeklinde giriniz."})</td>
         <td></td>
     </tr>
     <tr>
         <td>Sefer Saati</td>
-        <td>@Html.TextBoxFor(m => m.sefer.Saat)</td>
+        <td>@Html.TextBoxFor(m => m.sefer.Saat,new { @placeholder = "saat:dakika şeklinde giriniz."})</td>
         <td></td>
     </tr>
     <tr>

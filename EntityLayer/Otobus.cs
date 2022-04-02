@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,7 +11,9 @@ namespace EntityLayer
     {
         public int OtobusId { get; set; }
         public string OtobusResmi { get; set; }
+        [StringLength(30)]
         public string Marka { get; set; }
+        [StringLength(30)]
         public string Model { get; set; }
         public string Plaka { get; set; }
         public int KoltukSayisi { get; set; }

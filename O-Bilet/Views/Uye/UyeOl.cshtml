@@ -4,56 +4,99 @@
     ViewBag.Title = "UyeOl";
     Layout = "~/Views/Shared/index.cshtml";
 }
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<link rel="stylesheet" href="//code.jquery.com/ui/1.13.1/themes/base/jquery-ui.css" />
+<link rel="stylesheet" href="/resources/demos/style.css" />
+<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+<script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script>
 <h2>UyeOl</h2>
 
 
-@using (Html.BeginForm("UyeOl", "Uye",FormMethod.Post))
+@using (Html.BeginForm("UyeOl", "Uye", FormMethod.Post))
 {
-<table class="table">
-    <tr>
-        <td>Ad:</td>
-        <td> @Html.TextBoxFor(u => u.uye.UyeAdi, new { @placeholder = "Adınızı Giriniz..." })</td>
-    </tr>
-    <tr>
-        <td>Soyad:</td>
-        <td> @Html.TextBoxFor(u => u.uye.Soyad, new { @placeholder = "Soyadinizi Giriniz..." })</td>
-    </tr>
-    <tr>
-        <td>Sehir:</td>
-        <td>@Html.DropDownListFor(s => s.uye.SehirId, (SelectList)Model.Sehirler)</td>
-    </tr>
-    <tr>
-        <td>E-posta:</td>
-        <td>   @Html.TextBoxFor(u => u.uye.Eposta, new { @placeholder = "E-Postanizi Giriniz..." })</td>
-    </tr>
-    <tr>
-        <td>Telefon:</td>
-        <td>@Html.TextBoxFor(u => u.uye.Telefon, new { @placeholder = "Numaranizi Giriniz..." })</td>
-    </tr>
-    <tr>
-        <td>Sifre:</td>
-        <td>@Html.TextBoxFor(u => u.uye.Sifre, new { @placeholder = "Sifrenizi Giriniz..." })</td>
-    </tr>
-    <tr>
-        <td>Sifre Tekrar:</td>
-        <td> @Html.TextBoxFor(u => u.uye.Sifre, new { @placeholder = "Sifrenizi Tekrar Giriniz..." })</td>
-    </tr>
-    <tr>
-        <td colspan="2">
-                    <input type="submit" value="Create" class="btn btn-default" />
-               
-        </td>
-    </tr>
-</table>
-}
+    <table class="table">
+        <tr>
+            <td>Ad:</td>
+            <td> @Html.TextBoxFor(u => u.uye.UyeAdi, new { @id = "ad", @placeholder = "Adınızı Giriniz..." })</td>
+            <td>
+                @Html.ValidationMessageFor(model => model.uye.UyeAdi, "", new { @class = "text-danger" })
+            </td>
+        </tr>
+        <tr>
+            <td>Soyad:</td>
+            <td> @Html.TextBoxFor(u => u.uye.Soyad, new { @id = "soyad", @placeholder = "Soyadinizi Giriniz..." })</td>
+            <td>
+            </td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>Sehir:</td>
+            <td>@Html.DropDownListFor(s => s.uye.SehirId, (SelectList)Model.Sehirler)</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>E-posta:</td>
+            <td>   @Html.TextBoxFor(u => u.uye.Eposta, new { @id = "eposta", @placeholder = "E-Postanizi Giriniz..." })</td>
+            <td>
+            </td>
+        </tr>
+        <tr>
+            <td>Telefon:</td>
+            <td>@Html.TextBoxFor(u => u.uye.Telefon, new { @id = "numara", @placeholder = "Numaranizi Giriniz..." })</td>
+            <td>
+                @Html.ValidationMessageFor(model => model.uye.Telefon, "", new { @class = "text-danger" })
+            </td>
+
+        </tr>
+        <tr>
+            <td>Sifre:</td>
+            <td>@Html.TextBoxFor(u => u.uye.Sifre, new { @id = "sifre1", @placeholder = "Sifrenizi Giriniz..." })</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>Sifre Tekrar:</td>
+            <td> @Html.TextBoxFor(u => u.uye.Sifre, new { @id = "sifre2", @placeholder = "Sifrenizi Tekrar Giriniz..." })</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                
+
+            </td>
+        </tr>
+    </table>
+    <div id="h"></div>
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+}<input type="submit" value="Üye Ol" id="btnUyeOl" class="btn btn-default" />
 <script src="~/Scripts/jquery-3.4.1.min.js"></script>
 <script src="~/Scripts/jquery.validate.min.js"></script>
 <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
 
 <style>
-    .txt{
-        width:200px;
-        height:60px;
+    .txt {
+        width: 200px;
+        height: 60px;
     }
 </style>
+<script>
+    $(function () {
+        var hata = "";
+        $("#btnUyeOl").click(function () {
+            if ($("#ad").val() == "")
+                hata += "<p>Ad alanı boş geçilemez.</p>";
+            if ($("#soyad").val() == "")
+                hata += "<p>Soyad alanı boş geçilemez.</p>";
+            if ($("#eposta").val() == "")
+                hata += "<p>Eposta alanı boş geçilemez</p>";
+            if ($("#numara").val() == "")
+                hata += "<p>Telefon numarası boş geçilemez. </p>";
+            if ($("#sifre1").val() != $("sifre2").val())
+                hata += "şifreler uyuşmuyor.";
+            $("#h").html(hata);
+            if (hata == "")
+                return true;
+            else
+                return false;
+        })
+    });
+</script>
